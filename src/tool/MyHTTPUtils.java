@@ -246,10 +246,19 @@ System.out.println("IOException occurred in setResponseBody,e.getMessage() is >>
 				inStream.close();
 			} catch (IOException e) {
 System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>ioexception occurred when readInputStream from InputStream<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
-				e.printStackTrace();
+//				e.printStackTrace();
 				return null;
 			}
 	        return data;
 	    }
 
+	public static void sendError(HttpServletResponse response,int code,String message){
+		try {
+			response.sendError(code, message);
+		} catch (IOException e) {
+			System.out.println("error occurred when sendError(" + code + ", " + message);
+			return;
+		}
+	}
+	
 }
